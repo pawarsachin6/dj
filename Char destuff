@@ -1,0 +1,38 @@
+#include <bits/stdc++.h>
+#include <iostream>
+using namespace std;
+void bitStuffing(int N, string arr[])
+{
+    string flag="esc";
+    string esc="esc";
+    int i=0;
+    int k=0;
+    string arr1[15];
+    while(i<N){
+        if(arr[i].compare("esc")==0){
+            arr1[i++]=esc.append((string)arr[i]);
+            esc="esc";
+            k++;
+        }
+        if(arr[i].compare("flag")==0){
+            arr1[i++]=flag.append((string)arr[i]);
+            flag="esc";
+            k++;
+        }else{
+            arr1[i]=arr[i];
+            i++;
+            k++;
+        }
+    }
+    for(int j=0;j<= k;j++){
+        cout<<arr1[j]<<endl;
+    }
+   
+}
+int main()
+{
+    int N = 8;
+    string arr[] = { "esc", "flag", "cb", "db", "flag", "bf", "gb", "esc","flag" };
+    bitStuffing(N, arr);
+    return 0;
+}
