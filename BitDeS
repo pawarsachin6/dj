@@ -1,0 +1,43 @@
+#include<iostream>  
+#include<vector>  
+#include <algorithm>
+using namespace std;  
+bool check(vector<int>::iterator it,vector<int> &arr){
+    int sum=0;
+    if(*(it)==0 && *(it+1)==1){
+        vector<int>::iterator l=it+6;
+        for(it=it+1;it<l;it++){
+            if(*it==1){ sum++;}
+            else{sum==0;}
+            if(sum==5 && *(it+1)==0){
+                sum++;
+            }
+        }
+        
+    }
+    return true ? sum==6 : false;
+}
+int main()  
+{  
+vector<int> data{0,1,1,1,1,1,0,1,0,0,1,1,1,1,1,0,1,0,0,1,1,1,1,1,0,1,0};
+vector<int> pos;
+vector<int>::iterator i=data.begin();
+vector<int> copy=data;
+    
+    for(vector<int>::iterator it=data.begin();it!=data.end();it++){
+        if(check(it,data)){
+            cout<<"got "<<*it;
+            pos.push_back(it-data.begin());
+        }   
+    }
+    int z=6;
+    for(auto el:pos){
+        vector<int>::iterator itr=data.begin();
+        data.erase(itr+el+z);
+        z--;
+    }
+    cout<<endl;
+    for(auto el:data){
+        cout<<el;
+    }
+}
